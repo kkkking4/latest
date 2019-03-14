@@ -20,3 +20,4 @@ $sql = " select * from {$tmp_write_table} where wr_is_comment = 0".$cats." order
 
 <?php echo latest("스킨", "게시판|카테고리1,카테고리2", 5, 25); ?>
 //게시판 아이디 | 카테고리를 구분해서 넣고 함수를 호출
+?>
