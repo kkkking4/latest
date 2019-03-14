@@ -1,6 +1,7 @@
 
 <?php
 // $bo_tables 테이블들 사이 콤마(,) 단위로 구분해서 넣을 것, 콤마 사이에 공백 없이 (ex aaa,bbb,)
+//echo latest_all("스킨명", "게시판명1,게시판명2,게시판명3,게시판명4", 출력갯수, 글자수);
 function latest_all($skin_dir='', $bo_tables, $rows=10, $subject_len=40, $cache_time=1, $options='')
 {
 
@@ -40,15 +41,10 @@ function latest_all($skin_dir='', $bo_tables, $rows=10, $subject_len=40, $cache_
         for ($i=0; $row=sql_fetch_array($result); $i++) {
 
             $sql = " select * from {$g5['board_table']} where bo_table = '{$row['bo_table']}' ";
-
-          
-
             $board = sql_fetch($sql);
 
             $tmp_write_table = $g5['write_prefix'] . $row['bo_table'];
             $row2 = sql_fetch(" select * from {$tmp_write_table} where wr_id = '{$row['wr_id']}' ");
-
-
 
             $list[$i] = $row2;
             $list[$i] = get_list($row2, $board, $latest_skin_url, $subject_len);
